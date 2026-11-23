@@ -1,0 +1,52 @@
+{
+    "salas": [
+        {
+            "img": "",
+            "categoria": "Sala de trabajo",
+            "titulo": "Invernadero Norte",
+            "descripcion": "Un espacio silencioso bajo techo de cristal, ideal para concentrarse y desarrollar proyectos con luz natural.",
+            "capacidad": 12,
+            "disponible": 12
+        },
+        {
+            "img": "",
+            "categoria": "Sala de reuniones",
+            "titulo": "Sala bambú",
+            "descripcion": "Sala de reuniones con vista al jardín tropical, pantalla y mesa de madera para sesiones de equipo.",
+            "capacidad": 10,
+            "disponible": 10
+        },
+        {
+            "img": "",
+            "categoria": "Zona colaborativa",
+            "titulo": "Terraza Jardín",
+            "descripcion": "Zona colaborativa al aire libre bajo una pérgola de enredaderas.",
+            "capacidad": 24,
+            "disponible": 24
+        },
+        {
+            "img": "",
+            "categoria": "Escritorio individual",
+            "titulo": "Cabina musgo",
+            "descripcion": "Cabina individual con muro de musgo natural y luz cálida. Silencio total para llamadas y trabajo.",
+            "capacidad": 10,
+            "disponible": 10
+        },
+        {
+            "img": "",
+            "categoria": "Sala de trabajo",
+            "titulo": "Estudio Bosque",
+            "descripcion": "Gran estudio con tragaluces y árboles interiores. Mesas compartidas para equipo.",
+            "capacidad": 20,
+            "disponible": 20
+        },
+        {
+            "img": "",
+            "categoria": "Sala de reuniones",
+            "titulo": "Taller Raíces",
+            "descripcion": "Sala creativa con mesa redonda, tablero y ventanal al bosque. Pensada para talleres.",
+            "capacidad": 10,
+            "disponible": 1
+        }
+    ]
+}
