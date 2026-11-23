@@ -1,7 +1,7 @@
 {
     "salas": [
         {
-            "img": "",
+            "img": "./img/invernadero-norte.jpg",
             "categoria": "Sala de trabajo",
             "titulo": "Invernadero Norte",
             "descripcion": "Un espacio silencioso bajo techo de cristal, ideal para concentrarse y desarrollar proyectos con luz natural.",
@@ -9,7 +9,7 @@
             "disponible": 12
         },
         {
-            "img": "",
+            "img": "./img/sala-bambu.jpg",
             "categoria": "Sala de reuniones",
             "titulo": "Sala bambú",
             "descripcion": "Sala de reuniones con vista al jardín tropical, pantalla y mesa de madera para sesiones de equipo.",
@@ -17,7 +17,7 @@
             "disponible": 10
         },
         {
-            "img": "",
+            "img": "./img/terraza-jardin.jpg",
             "categoria": "Zona colaborativa",
             "titulo": "Terraza Jardín",
             "descripcion": "Zona colaborativa al aire libre bajo una pérgola de enredaderas.",
@@ -25,7 +25,7 @@
             "disponible": 24
         },
         {
-            "img": "",
+            "img": "./img/cabina-musgo",
             "categoria": "Escritorio individual",
             "titulo": "Cabina musgo",
             "descripcion": "Cabina individual con muro de musgo natural y luz cálida. Silencio total para llamadas y trabajo.",
@@ -33,7 +33,7 @@
             "disponible": 10
         },
         {
-            "img": "",
+            "img": "./img/estudio-bosque.jpg",
             "categoria": "Sala de trabajo",
             "titulo": "Estudio Bosque",
             "descripcion": "Gran estudio con tragaluces y árboles interiores. Mesas compartidas para equipo.",
@@ -41,7 +41,7 @@
             "disponible": 20
         },
         {
-            "img": "",
+            "img": "./img/taller-raices.jpg",
             "categoria": "Sala de reuniones",
             "titulo": "Taller Raíces",
             "descripcion": "Sala creativa con mesa redonda, tablero y ventanal al bosque. Pensada para talleres.",
