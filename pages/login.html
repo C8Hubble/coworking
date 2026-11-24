@@ -1,26 +1,219 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso administrador | Verde Coworking</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso administrador · Verde Coworking</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap"
+    rel="stylesheet"
+  >
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --font-sans: "Nunito Sans", sans-serif;
+      --font-titulos: "Montserrat", sans-serif;
+      --color-crema: #fefae0;
+      --color-bosque: #283618;
+      --color-hoja: #a7c957;
+      --color-tierra: #8c4d19;
+    }
+
+    @custom-variant dark (&:where(.dark, .dark *));
+  </style>
+
+  <script src="./js/login.js" defer></script>
 </head>
-<body>
-    <header>
-        <a href="../index.html">Verde Coworking</a>
-    </header>
 
-    <main>
-        <h1>Acceso administrador</h1>
-        <form action="./admin.html" method="get">
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" required>
+<body class="bg-crema font-sans text-bosque dark:bg-[#182110] dark:text-crema">
+  <div class="min-h-dvh lg:grid lg:grid-cols-[51.2%_1fr]">
 
-            <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password" required>
+    <!-- Columna izquierda: portada visible en escritorio -->
+    <aside class="relative isolate hidden min-h-dvh flex-col justify-between overflow-hidden bg-bosque p-12 text-crema lg:flex">
+      <img
+        src="https://verde-bloom-workspaces.lovable.app/assets/login-leaves-DVHHiGjG.jpg"
+        alt=""
+        class="absolute inset-0 -z-20 size-full object-cover"
+      >
+      <div
+        aria-hidden="true"
+        class="absolute inset-0 -z-10 bg-linear-to-b from-black/55 via-black/30 to-[#101909]/90"
+      ></div>
 
-            <button type="submit">Ingresar</button>
-        </form>
+      <a
+        href="./index.html"
+        aria-label="Verde Coworking, inicio"
+        class="flex w-fit items-center gap-2.5 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-hoja"
+      >
+        <span class="grid size-10 place-items-center rounded-full bg-hoja text-bosque">
+          <svg aria-hidden="true" class="size-5" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 21h10m-5 0v-9m0 1C7 13 4 11 4 7c5 0 8 2 8 6Zm0-2c0-5 3-8 8-8 0 5-3 8-8 8Z"/>
+          </svg>
+        </span>
+        <span>
+          <span class="block font-titulos text-lg leading-6 font-extrabold">Verde</span>
+          <span class="block font-titulos text-[9px] font-bold tracking-[.28em] text-hoja uppercase">
+            Coworking
+          </span>
+        </span>
+      </a>
+
+      <div class="max-w-md">
+        <p class="text-sm font-extrabold tracking-[.18em] text-hoja uppercase">
+          Panel de gestión
+        </p>
+        <h2 class="mt-4 font-titulos text-4xl leading-tight font-extrabold">
+          Cuida cada espacio como cuidamos cada planta
+        </h2>
+        <p class="mt-4 leading-6 text-crema/80">
+          Administra salas, disponibilidad y reservas desde un solo lugar.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Columna derecha: navegación y formulario -->
+    <main class="flex min-h-dvh flex-col px-6 py-6 sm:px-10">
+      <header class="flex items-center justify-between">
+        <a href="./index.html" class="inline-flex items-center gap-2 text-xs font-bold hover:underline">
+          <span aria-hidden="true" class="text-base">←</span>
+          Volver al inicio
+        </a>
+
+        <button
+          type="button"
+          id="tema-login"
+          aria-label="Activar tema oscuro"
+          class="grid size-10 cursor-pointer place-items-center rounded-full border border-bosque/12 bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hoja dark:border-crema/25 dark:bg-[#24311a]"
+        >
+          <svg aria-hidden="true" class="size-4 dark:hidden" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/>
+          </svg>
+          <svg aria-hidden="true" class="hidden size-4 dark:block" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="grid flex-1 place-items-center py-8">
+        <div class="w-full max-w-md">
+          <div aria-hidden="true" class="grid size-14 place-items-center rounded-[20px] bg-hoja text-bosque shadow-lg shadow-hoja/25">
+            <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="10" width="18" height="12" rx="2"/>
+              <path d="M7 10V7a5 5 0 0 1 10 0v3m-5 5v2"/>
+            </svg>
+          </div>
+
+          <h1 class="mt-6 font-titulos text-3xl font-extrabold tracking-tight">
+            Inicia sesión
+          </h1>
+          <p class="mt-2 text-bosque/80 dark:text-crema/80">
+            Acceso exclusivo para el equipo administrador de Verde.
+          </p>
+
+          <form id="form-login" method="post" class="mt-8 space-y-5">
+            <div>
+              <label for="correo" class="block text-sm font-bold">Correo electrónico</label>
+
+              <div class="relative mt-1.5">
+                <svg aria-hidden="true"
+                  class="pointer-events-none absolute inset-y-0 left-3.5 my-auto size-4 opacity-75"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m3 6 9 7 9-7"/>
+                </svg>
+
+                <input
+                  type="email"
+                  id="correo"
+                  name="correo"
+                  autocomplete="username"
+                  placeholder="admin@verdecoworking.com"
+                  required
+                  class="h-11 w-full rounded-[20px] border border-bosque/20 bg-white pr-4 pl-10 text-sm placeholder:text-bosque/80 focus:outline-2 focus:outline-hoja dark:border-crema/25 dark:bg-[#24311a] dark:placeholder:text-crema/70"
+                >
+              </div>
+            </div>
+
+            <div>
+              <label for="clave" class="block text-sm font-bold">Contraseña</label>
+
+              <div class="group relative mt-1.5">
+                <svg aria-hidden="true"
+                  class="pointer-events-none absolute inset-y-0 left-3.5 my-auto size-4 opacity-75"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 7a5 5 0 0 1-6.7 4.7L7 19v2H3v-4l7.3-7.3A5 5 0 1 1 21 7Z"/>
+                  <path d="M17 7h.01"/>
+                </svg>
+
+                <input
+                  type="password"
+                  id="clave"
+                  name="clave"
+                  autocomplete="current-password"
+                  placeholder="••••••••"
+                  required
+                  class="h-11 w-full rounded-[20px] border border-bosque/20 bg-white px-10 text-sm placeholder:text-bosque/80 focus:outline-2 focus:outline-hoja dark:border-crema/25 dark:bg-[#24311a] dark:placeholder:text-crema/70"
+                >
+
+                <button
+                  type="button"
+                  id="mostrar-clave"
+                  aria-controls="clave"
+                  class="absolute inset-y-0 right-1 grid w-9 cursor-pointer place-items-center rounded-full text-[0px] focus-visible:outline-2 focus-visible:outline-hoja"
+                >Mostrar contraseña</button>
+
+                <svg aria-hidden="true"
+                  class="pointer-events-none absolute inset-y-0 right-3.5 my-auto size-4 opacity-75"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                  <path class="hidden group-has-[input[type=text]]:block" d="m3 3 18 18"/>
+                </svg>
+              </div>
+            </div>
+
+            <p id="mensaje-login" role="alert" class="text-sm font-bold text-red-800 empty:sr-only dark:text-red-300"></p>
+
+            <button
+              type="submit"
+              class="h-12 w-full cursor-pointer rounded-full bg-bosque px-6 font-bold text-crema shadow-md hover:bg-bosque/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bosque dark:bg-hoja dark:text-bosque dark:hover:bg-hoja/90 dark:focus-visible:outline-hoja"
+            >
+              Iniciar sesión
+            </button>
+          </form>
+
+          <aside
+            aria-labelledby="titulo-cuenta-prueba"
+            class="mt-8 rounded-3xl border border-dashed border-bosque/20 bg-bosque/[.025] p-4 text-sm dark:border-crema/25 dark:bg-crema/5"
+          >
+            <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+              <h2 id="titulo-cuenta-prueba" class="font-bold">Cuenta de prueba</h2>
+              <button
+                type="button"
+                id="usar-datos"
+                class="cursor-pointer text-xs font-bold text-tierra hover:underline dark:text-hoja"
+              >
+                Usar estos datos
+              </button>
+            </div>
+            <p class="break-all">admin@verdecoworking.com</p>
+            <p>Contraseña: <span class="font-semibold">Admin123</span></p>
+          </aside>
+        </div>
+      </div>
     </main>
+  </div>
 </body>
 </html>
