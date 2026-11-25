@@ -25,7 +25,7 @@
                         </path>
                     </svg>
                 </div>
-                <h2 class="text-2xl font-bold">10</h2>
+                <h2 id="total-espacios" class="text-2xl font-bold">10</h2>
                 <span>puestos totales</span>
             </article>
 
@@ -221,7 +221,50 @@
                 </div>
             </article>
         </section>
+
+        <section class="w-full px-4">
+            <div class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4">
+                <!-- Input: ocupa todo el ancho en móvil y se adapta en escritorio -->
+                <input type="text" placeholder="Buscar por nombre..."
+                    class="w-full rounded-lg border border-gray-300 px-3 py-1.5 text-sm sm:w-auto sm:flex-1">
+
+                <!-- Filtros: scroll horizontal suave si la pantalla es muy estrecha -->
+                <div class="flex items-center gap-4 overflow-x-auto text-sm">
+                    <p class="cursor-pointer whitespace-nowrap font-medium">Todos</p>
+                    <p class="cursor-pointer whitespace-nowrap">Disponible</p>
+                    <p class="cursor-pointer whitespace-nowrap">Ocupado</p>
+                    <p class="cursor-pointer whitespace-nowrap">Mantenimiento</p>
+                </div>
+
+                <!-- Botón: ancho completo en móvil para fácil toque, normal en escritorio + color de fondo -->
+                <button
+                    class="w-full cursor-pointer rounded-lg px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700 sm:w-auto">
+                    + Nuevo espacio
+                </button>
+            </div>
+
+
+            <div class="mx-auto max-w-5xl overflow-x-auto rounded-lg border">
+                <table class="w-full border-collapse text-left text-sm">
+                    <thead class="border-b text-xs uppercase">
+                        <tr>
+                            <th class="px-6 py-3 font-medium">Espacio</th>
+                            <th class="px-6 py-3 font-medium">Estado</th>
+                            <th class="px-6 py-3 font-medium">Capacidad</th>
+                            <th class="px-6 py-3 font-medium">Disponibilidad</th>
+                            <th class="px-6 py-3 text-right font-medium">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabla-espacios" class="divide-y">
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </main>
+
+    <script src="../js/dashboard.js"></script>
 </body>
 
 </html>
