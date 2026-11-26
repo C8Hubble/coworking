@@ -2,6 +2,30 @@ const host = "http://localhost:3000"
 const modal = document.getElementById('modalEspacio')
 let salas = []
 
+const buscarInput = document.getElementById('buscarInput')
+
+buscarInput.addEventListener('input', (e) => {
+    const texto = buscarInput.value.toLowerCase()
+    const salasFilter = salas.filter(sala => sala.titulo.toLowerCase().includes(texto))
+    listar(salasFilter)
+})
+
+function listar(salas) {
+    const tabla = document.getElementById('tabla-espacios')
+    tabla.innerHTML = ''
+    salas.forEach(sala => {
+        tabla.innerHTML += `                        <tr>
+                            <td>${sala.titulo}</td>
+                            <td>${sala.disponible}</td>
+                            <td>${sala.capacidad}</td>
+                            <td>${sala.disponible}</td>
+                            <td>                       
+                        <button onclick="borrar('${sala.id}')">Eliminar</button>
+                        <button onclick="updateForm('${sala.id}')">Editar</button></td>
+                        </tr>`
+    });
+}
+
 async function getSalas(host) {
     try {
         const res = await fetch(`${host}/salas`)
@@ -15,19 +39,8 @@ async function getSalas(host) {
 document.addEventListener('DOMContentLoaded', async () => {
 
     salas = await getSalas(host)
+    listar(salas)
 
-    salas.forEach(sala => {
-        const tabla = document.getElementById('tabla-espacios')
-        tabla.innerHTML += `                        <tr>
-                            <td>${sala.titulo}</td>
-                            <td>${sala.disponible}</td>
-                            <td>${sala.capacidad}</td>
-                            <td>${sala.disponible}</td>
-                            <td>                       
-                        <button onclick="borrar('${sala.id}')">Eliminar</button>
-                        <button onclick="updateForm('${sala.id}')">Editar</button></td>
-                        </tr>`
-    });
 
 })
 
@@ -179,6 +192,7 @@ function updateForm(id) {
     inputDescripcion.value = sala.descripcion
     selectTipo.value = sala.categoria
     inputCapacidad.value = sala.capacidad
+    inputDisponible.setAttribute('max', `${inputCapacidad.value}`)
     inputDisponible.value = sala.disponible
     inputImagen.value = sala.img
     imgPreview.src = sala.img.replace('./img/', '../img/')
