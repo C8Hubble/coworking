@@ -80,10 +80,33 @@ async function updateSala(host, sala) {
         })
 
         if (res.ok) {
-            console.log('DELETE: Recurso eliminado');
+            console.log('PUT: Recurso actualizado');
 
         } else {
             console.error('PUT falló');
+        }
+    } catch (error) {
+        console.error(error)
+
+    }
+
+}
+
+async function createSala(host, sala) {
+    try {
+        const res = await fetch(`${host}/salas`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(sala)
+        })
+
+        if (res.ok) {
+            console.log('POST: Recurso creado');
+
+        } else {
+            console.error('POST falló');
         }
     } catch (error) {
         console.error(error)
@@ -100,31 +123,80 @@ function cerrarModal() {
     modal.close()
 }
 
-document.getElementById('btnNuevoEspacio').addEventListener('click', abrirModal)
+document.getElementById('btnNuevoEspacio').addEventListener('click', createForm)
 
-
-async function updateForm(id) {
-
-    const sala = await salas.find(s => String(s.id) === String(id))
+function createForm() {
 
     const form = document.getElementById('formNuevoEspacio')
     const inputNombre = document.getElementById('nombre')
-    inputNombre.value = sala.titulo
     const inputDescripcion = document.getElementById('descripcion')
-    inputDescripcion.value = sala.descripcion
     const selectTipo = document.getElementById('tipo')
-    selectTipo.value = sala.categoria
-    const selectEstado = document.getElementById('estado')
     const inputCapacidad = document.getElementById('capacidad')
     const inputDisponible = document.getElementById('disponible')
-    const inputPrecio = document.getElementById('precio')
     const inputImagen = document.getElementById('imagen')
     const imgPreview = document.getElementById('previewImagen')
-    imgPreview.src = sala.img
     const tituloModal = modal.querySelector('h2')
-    const btnSubmit = form.querySelector('button[type="submit"]')
+
+    tituloModal.innerText = 'Crear sala'
 
     abrirModal()
 
 
+    form.onsubmit = (e) => {
+        e.preventDefault()
+        const sala = {
+            titulo: inputNombre.value,
+            descripcion: inputDescripcion.value,
+            categoria: selectTipo.value,
+            capacidad: Number(inputCapacidad.value),
+            disponible: Number(inputDisponible.value),
+            img: inputImagen.value
+        }
+
+
+
+        createSala(host, sala)
+    }
+
+}
+
+
+function updateForm(id) {
+    const sala = salas.find(s => String(s.id) === String(id))
+    if (!sala) return
+
+    const form = document.getElementById('formNuevoEspacio')
+    const inputNombre = document.getElementById('nombre')
+    const inputDescripcion = document.getElementById('descripcion')
+    const selectTipo = document.getElementById('tipo')
+    const inputCapacidad = document.getElementById('capacidad')
+    const inputDisponible = document.getElementById('disponible')
+    const inputImagen = document.getElementById('imagen')
+    const imgPreview = document.getElementById('previewImagen')
+    const tituloModal = modal.querySelector('h2')
+
+    inputNombre.value = sala.titulo
+    inputDescripcion.value = sala.descripcion
+    selectTipo.value = sala.categoria
+    inputCapacidad.value = sala.capacidad
+    inputDisponible.value = sala.disponible
+    inputImagen.value = sala.img
+    imgPreview.src = sala.img.replace('./img/', '../img/')
+    tituloModal.innerText = 'Editar sala'
+
+    abrirModal()
+
+
+    form.onsubmit = (e) => {
+        e.preventDefault()
+
+        sala.titulo = inputNombre.value
+        sala.descripcion = inputDescripcion.value
+        sala.categoria = selectTipo.value
+        sala.capacidad = Number(inputCapacidad.value)
+        sala.disponible = Number(inputDisponible.value)
+        sala.img = inputImagen.value
+
+        updateSala(host, sala)
+    }
 }
