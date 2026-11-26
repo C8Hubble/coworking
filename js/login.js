@@ -6,7 +6,6 @@ const correo = document.getElementById("correo");
 const clave = document.getElementById("clave");
 const mensaje = document.getElementById("mensaje-login");
 const botonMostrar = document.getElementById("mostrar-clave");
-const botonUsarDatos = document.getElementById("usar-datos");
 
 botonMostrar.addEventListener("click", () => {
   const claveOculta = clave.type === "password";
@@ -15,12 +14,6 @@ botonMostrar.addEventListener("click", () => {
   botonMostrar.textContent = claveOculta
     ? "Ocultar contraseña"
     : "Mostrar contraseña";
-});
-
-botonUsarDatos.addEventListener("click", () => {
-  correo.value = correoAdmin;
-  clave.value = claveAdmin;
-  mensaje.textContent = "";
 });
 
 formulario.addEventListener("submit", (e) => {

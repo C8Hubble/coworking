@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+@theme{
   --verde-crema: #fefae0;
   --verde-bosque: #283618;
   --verde-hoja: #a7c957;
