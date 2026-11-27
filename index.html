@@ -8,31 +8,46 @@
     content="Conoce los espacios de trabajo de Verde Coworking."
   >
   <title>Verde Coworking</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="./dist/output.css">
+
 </head>
 <body>
-  <a href="#contenido">Saltar al contenido</a>
-
-  <header>
-    <a href="./index.html">Verde Coworking</a>
-
-    <nav aria-label="Navegación principal">
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#espacios">Espacios</a></li>
-        <li><a href="#nosotros">Sobre nosotros</a></li>
-        <li><a href="#beneficios">Beneficios</a></li>
-        <li><a href="./pages/login.html">Acceso administrador</a></li>
-      </ul>
-    </nav>
-  </header>
-
   <main id="contenido">
-    <section id="inicio">
-      <h1>Trabaja rodeado de naturaleza</h1>
-      <p>Encuentra un lugar tranquilo para concentrarte, reunirte y crear.</p>
-      <a href="#espacios">Explorar espacios</a>
-    </section>
+    <section id="inicio" class="relative isolate bg-[#283618] text-[#fefae0]">
+  <img
+    src="img/hero-coworking.jpg"
+    alt=""
+    class="absolute inset-0 -z-20 h-full w-full object-cover"
+  >
 
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 -z-10 bg-black/35 sm:bg-linear-to-r sm:from-black/60 sm:to-black/10"
+  ></div>
+
+  <div class="mx-auto flex min-h-112 max-w-6xl flex-col justify-center px-5 py-16 sm:px-8">
+    <h1 class="max-w-2xl text-4xl font-extrabold tracking-tight sm:text-6xl">
+      Espacios donde las ideas florecen
+    </h1>
+
+    <p class="mt-4 max-w-md text-lg">
+      Encuentra un lugar tranquilo para concentrarte, reunirte y crear.
+    </p>
+
+    <a
+      href="#espacios"
+      class="mt-7 w-fit rounded-full bg-[#a7c957] px-6 py-3 font-bold text-[#283618] hover:bg-[#b7d66b]"
+    >
+      Explorar espacios
+    </a>
+  </div>
+</section>
     <section id="nosotros">
       <h2>Sobre nosotros</h2>
       <p>

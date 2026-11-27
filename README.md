@@ -15,8 +15,18 @@ La landing incluye:
 
 Los enlaces del menú usan identificadores como `#espacios` para llevar al visitante a una sección dentro de la misma página. El acceso de administrador se encuentra en `pages/login.html` y dirige al panel `pages/admin.html`.
 
-La carpeta `dist/` contiene archivos generados y está ignorada por Git.
+## Estilos con Tailwind CSS
+
+El proyecto utiliza Tailwind CSS `v4.3.5` mediante `@tailwindcss/cli`. Los estilos personalizados se encuentran en `src/styles.css` y se compilan en `dist/output.css`.
+
+Para generar el archivo CSS durante el desarrollo:
+
+```bash
+npx @tailwindcss/cli -i ./src/styles.css -o ./dist/output.css --watch
+```
+
+Las páginas cargan únicamente la hoja compilada desde `dist/output.css`; no se utiliza el CDN de Tailwind. Esto permite que la aplicación funcione correctamente como sitio estático en GitHub Pages. El archivo generado `dist/output.css` debe incluirse en la publicación.
 
 ## Próximos pasos
 
-Aplicar los estilos responsivos con Tailwind CSS y conectar el catálogo con los registros de JSON Server.
+Continuar mejorando los estilos responsivos y conectar el catálogo con los registros de JSON Server.
