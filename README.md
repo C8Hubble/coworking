@@ -4,16 +4,21 @@ Verde Coworking es una página web que presenta un espacio de trabajo compartido
 
 ## Avance actual
 
-En esta primera etapa se construyó el archivo `index.html` con HTML semántico. Se usaron etiquetas como `<header>`, `<nav>`, `<main>`, `<section>`, `<article>` y `<footer>` para organizar el contenido y darle una estructura clara a la página.
+El archivo `index.html` presenta una landing page responsive construida con HTML semántico y Tailwind CSS. Se usan secciones para la portada, la información del coworking, los espacios de trabajo y los beneficios.
 
 La landing incluye:
 
 - Un encabezado con enlaces a Inicio, Espacios, Sobre nosotros y Beneficios.
-- Una portada con una breve presentación y un enlace al catálogo.
-- Un catálogo con una tarjeta de ejemplo que muestra el nombre, la descripción y la capacidad de un espacio.
-- Un pie de página con un enlace al acceso administrador. El acceso también aparece en el menú principal.
+- Una portada visual con imagen de fondo, mensaje principal, indicador de disponibilidad y accesos a las secciones.
+- Un bloque informativo sobre Verde Coworking con estadísticas de espacios, puestos, plantas y conexión con la naturaleza.
+- Una sección de espacios de trabajo preparada para mostrar el catálogo.
+- Una sección de beneficios con cuatro tarjetas: naturaleza, productividad, tranquilidad y comunidad.
+- Imágenes con carga diferida en las secciones secundarias y textos alternativos descriptivos.
+- Un pie de página con un enlace al acceso administrador.
 
-Los enlaces del menú usan identificadores como `#espacios` para llevar al visitante a una sección dentro de la misma página. El acceso de administrador se encuentra en `pages/login.html` y dirige al panel `pages/admin.html`.
+Los enlaces de la página usan identificadores como `#nosotros` y `#espacios` para llevar al visitante a una sección dentro de la misma página. El acceso de administrador se encuentra en `pages/login.html` y dirige al panel `pages/admin.html`.
+
+La página utiliza Montserrat para los títulos y Nunito Sans para el texto, cargadas desde Google Fonts. La imagen principal y algunas imágenes de disponibilidad se cargan desde recursos externos; las imágenes de las secciones internas se encuentran en la carpeta `img/`.
 
 ## Estilos con Tailwind CSS
 
@@ -29,4 +34,4 @@ Las páginas cargan únicamente la hoja compilada desde `dist/output.css`; no se
 
 ## Próximos pasos
 
-Continuar mejorando los estilos responsivos y conectar el catálogo con los registros de JSON Server.
+Continuar mejorando los estilos responsivos, tambien indicarle a la ia como podre ahcer los estilos modales
