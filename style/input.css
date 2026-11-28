@@ -8,3 +8,99 @@
     --color-subtitle: #bc6c25;
     --color-second-subtitle: #e09f3e;
 }
+
+@layer components {
+    .dashboard-sidebar {
+        display: flex;
+        flex: 0 0 16rem;
+        flex-direction: column;
+        gap: 2rem;
+        min-height: calc(100vh - 3rem);
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+        color: var(--color-main);
+        background-color: var(--color-bg-secundary);
+    }
+
+    .dashboard-sidebar__brand {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--color-main);
+        font-size: 1.125rem;
+        font-weight: 800;
+        text-decoration: none;
+    }
+
+    .dashboard-sidebar__brand svg {
+        flex: none;
+        color: var(--color-text-secondary);
+    }
+
+    .dashboard-sidebar__nav,
+    .dashboard-sidebar__footer {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .dashboard-sidebar__footer {
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid rgb(254 250 224 / 20%);
+    }
+
+    .dashboard-sidebar__link {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 0;
+        border-radius: 0.875rem;
+        color: var(--color-main);
+        background: transparent;
+        font: inherit;
+        font-weight: 700;
+        text-align: left;
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 150ms ease, background-color 150ms ease;
+    }
+
+    .dashboard-sidebar__link svg {
+        flex: none;
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    .dashboard-sidebar__link:hover {
+        background-color: rgb(167 201 87 / 18%);
+    }
+
+    .dashboard-sidebar__link[aria-current="page"] {
+        color: var(--color-text-primary);
+        background-color: var(--color-text-secondary);
+    }
+
+    .dashboard-sidebar__logout {
+        appearance: none;
+    }
+
+    @media (max-width: 767px) {
+        .dashboard-layout {
+            flex-direction: column;
+        }
+
+        .dashboard-sidebar {
+            flex-basis: auto;
+            min-height: auto;
+            gap: 1.25rem;
+            padding: 1rem;
+        }
+
+        .dashboard-sidebar__footer {
+            margin-top: 0;
+        }
+    }
+}

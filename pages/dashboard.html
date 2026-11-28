@@ -8,252 +8,291 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="min-h-screen bg-main p-4 text-[#283618] sm:p-6">
-    <main class="mx-auto flex w-full max-w-[1440px] flex-col gap-6">
-        <section class="grid w-full grid-cols-1 justify-items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-                <div class="flex flex-row items-center justify-between gap-2">
-                    <h3 class="text-sm font-bold text-[#748071]">Total de espacios</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-trees size-10 rounded-2xl rounded-tl-md bg-[#edf3e6] p-2.5 text-[#2f4d2d]" aria-hidden="true">
-                        <path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"></path>
-                        <path d="M7 16v6"></path>
-                        <path d="M13 19v3"></path>
-                        <path
-                            d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5">
-                        </path>
-                    </svg>
-                </div>
-                <h2 id="total-espacios" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
-                <span id="puestos-totales" class="text-xs font-semibold text-[#748071]">puestos en total</span>
-            </article>
-
-            <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-                <div class="flex flex-row items-center justify-between gap-2">
-                    <h3 class="text-sm font-bold text-[#748071]">Disponibles</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-circle-check size-10 rounded-2xl rounded-tl-md bg-[#eaf3e3] p-2.5 text-[#527b3e]" aria-hidden="true">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="m9 12 2 2 4-4"></path>
-                    </svg>
-                </div>
-                <h2 id="espacios-disponibles" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
-                <span id="cupos-libres" class="text-xs font-semibold text-[#748071]">0 cupos libres</span>
-            </article>
-
-            <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-                <div class="flex flex-row items-center justify-between gap-2">
-                    <h3 class="text-sm font-bold text-[#748071]">Ocupados</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-circle-slash size-10 rounded-2xl rounded-tl-md bg-[#faece8] p-2.5 text-[#a64e43]" aria-hidden="true">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="9" x2="15" y1="15" y2="9"></line>
-                    </svg>
-                </div>
-                <h2 id="espacios-ocupados" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
-                <span class="text-xs font-semibold text-[#748071]">Sin cupos por ahora</span>
-            </article>
-
-            <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-                <div class="flex flex-row items-center justify-between gap-2">
-                    <h3 class="text-sm font-bold text-[#748071]">En mantenimiento</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-wrench size-10 rounded-2xl rounded-tl-md bg-[#fbf1dc] p-2.5 text-[#a56d25]" aria-hidden="true">
-                        <path
-                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z">
-                        </path>
-                    </svg>
-                </div>
-                <h2 id="espacios-mantenimiento" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
-                <span class="text-xs font-semibold text-[#748071]">Reservas deshabilitadas</span>
-            </article>
-
-            <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
-                <div class="flex flex-row items-center justify-between gap-2">
-                    <h3 class="text-sm font-bold text-[#748071]">Reservas registradas</h3>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="lucide lucide-calendar-check size-10 rounded-2xl rounded-tl-md bg-[#eaf3e3] p-2.5 text-[#527b3e]" aria-hidden="true">
-                        <path d="M8 2v4"></path>
-                        <path d="M16 2v4"></path>
-                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                        <path d="M3 10h18"></path>
-                        <path d="m9 16 2 2 4-4"></path>
-                    </svg>
-                </div>
-                <h2 id="reservas-registradas" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
-                <span class="text-xs font-semibold text-[#748071]">Sin fuente de reservas</span>
-            </article>
-        </section>
-
-        <section class="mx-auto flex w-full max-w-4xl flex-col gap-y-6 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] sm:p-7">
-            <div class="flex flex-row items-end justify-between gap-3 border-b border-[#e2e8dc] pb-5">
-                <div>
-                    <h2 class="text-lg font-extrabold">Ocupación por espacio</h2>
-                    <p class="text-sm text-[#748071]">Cupos usados frente a la capacidad total</p>
-                </div>
-                <div>
-                    <p class="text-3xl font-extrabold tabular-nums"><span id="ocupacion-global">0</span><span class="ml-1 text-sm font-semibold text-[#748071]">% global</span></p>
-                </div>
+<body class="min-h-screen bg-main text-[#283618]">
+    <header class="sticky top-0 z-20 border-b border-[#e2e8dc] bg-main/90 backdrop-blur-xl">
+        <div class="flex items-center gap-3 px-5 py-3.5 sm:px-8">
+            <div class="min-w-0 flex-1">
+                <h1 class="truncate text-lg font-extrabold sm:text-xl"><a href="../index.html">Administrador</a></h1>
+                <p class="hidden truncate text-xs text-[#748071] sm:block">Resumen general del coworking</p>
             </div>
-
-            <div id="ocupacion-espacios" class="space-y-4" aria-live="polite"></div>
-
-
-            <article class="flex max-w-full flex-wrap items-center gap-x-8 gap-y-3 border-t border-[#e2e8dc] pt-5 text-sm text-[#748071]">
-                <div class="flex items-center gap-2">
-                    <div class="size-3 rounded-full bg-[#527b3e]"></div>
-                    <span>Disponible</span>
+             <nav aria-label="Navegación de gestión"
+                class="mx-auto flex shrink-0 items-center gap-1 rounded-full border border-[#e2e8dc] bg-[#f4f7f1]">
+                <a href="./dashboard.html" aria-current="page"
+                    class="rounded-full bg-white px-3 py-2 text-xs font-bold text-[#748071]">
+                    Administración
+                </a>
+                <a href="./reservas.html"
+                    class="rounded-full px-3 py-2 text-xs font-semibold text-[#748071] hover:bg-[#f4f7f1]">
+                    Reservas
+                </a>
+            </nav>
+            <div class="flex flex-1 items-center justify-end gap-3">
+                <div class="hidden items-center gap-3 rounded-full border border-[#e2e8dc] bg-white py-1 pl-1 pr-4 sm:flex">
+                    <span class="grid size-8 place-items-center rounded-full bg-[#e09f3e] font-display text-xs font-extrabold text-[#283618]">LM</span>
+                    <div class="leading-tight">
+                        <p class="text-sm font-bold">Laura Montoya</p>
+                        <p class="text-[0.7rem] text-[#748071]">Administradora</p>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2">
-                    <div class="size-3 rounded-full bg-[#c85c4d]"></div>
-                    <span>Ocupado</span>
-                </div>
-                <div class="flex items-center gap-2">
-                    <div class="size-3 rounded-full bg-[#d29a3d]"></div>
-                    <span>Mantenimiento</span>
-                </div>
-
-            </article>
-        </section>
-
-        <section class="w-full rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] sm:p-7">
-            <div class="mx-auto mb-5 flex w-full max-w-5xl flex-wrap items-center justify-between gap-4">
-
-                <input id="buscarInput" type="text" placeholder="Buscar por nombre..."
-                    class="w-full min-h-10 rounded-full border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-2 text-sm placeholder:text-[#8b9588] focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30 sm:w-auto sm:flex-1">
-
-                <!-- Filtros: scroll horizontal suave si la pantalla es muy estrecha -->
-                <div id="filtros-estado" class="flex items-center gap-1 overflow-x-auto text-xs" role="group" aria-label="Filtrar espacios por estado">
-                    <button type="button" data-filtro-estado="todos" aria-pressed="true" class="whitespace-nowrap rounded-full bg-[#edf3e6] px-3 py-2 font-bold text-[#2f4d2d] transition">Todos</button>
-                    <button type="button" data-filtro-estado="disponible" aria-pressed="false" class="whitespace-nowrap rounded-full px-3 py-2 font-semibold text-[#748071] transition hover:bg-[#f3f6ef] hover:text-[#2f4d2d]">Disponible</button>
-                    <button type="button" data-filtro-estado="ocupado" aria-pressed="false" class="whitespace-nowrap rounded-full px-3 py-2 font-semibold text-[#748071] transition hover:bg-[#f3f6ef] hover:text-[#2f4d2d]">Ocupado</button>
-                    <button type="button" data-filtro-estado="mantenimiento" aria-pressed="false" class="whitespace-nowrap rounded-full px-3 py-2 font-semibold text-[#748071] transition hover:bg-[#f3f6ef] hover:text-[#2f4d2d]">Mantenimiento</button>
-                </div>
-
-                <!-- Botón: ancho completo en móvil para fácil toque, normal en escritorio + color de fondo -->
-                <button id="btnNuevoEspacio" class="inline-flex min-h-10 w-full cursor-pointer items-center justify-center rounded-full bg-[#4f743d] px-5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#2f4d2d] sm:w-auto">
-                    + Nuevo espacio
+                <button type="button" aria-label="Cerrar sesión" title="Cerrar sesión" class="grid size-10 cursor-pointer place-items-center rounded-full border border-[#e2e8dc] bg-white transition-colors hover:bg-[#f4f7f1]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true">
+                        <path d="m16 17 5-5-5-5"></path>
+                        <path d="M21 12H9"></path>
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    </svg>
                 </button>
             </div>
+        </div>
+    </header>
+    <main class="w-full p-4 sm:p-6">
+        <div class="w-full max-w-none flex flex-col gap-2">
 
-
-            <div class="mx-auto max-w-5xl overflow-x-auto rounded-2xl border border-[#e2e8dc]">
-                <table class="w-full min-w-[640px] border-collapse text-left text-sm">
-                    <thead class="border-b border-[#e2e8dc] bg-[#f5f8f2] text-xs uppercase tracking-wider text-[#748071]">
-                        <tr>
-                            <th class="px-6 py-3 font-bold">Espacio</th>
-                            <th class="px-6 py-3 font-bold">Estado</th>
-                            <th class="px-6 py-3 font-bold">Capacidad</th>
-                            <th class="px-6 py-3 font-bold">Disponibilidad</th>
-                            <th class="px-6 py-3 text-right font-bold">Acciones</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="tabla-espacios" class="[&_tr]:border-b [&_tr]:border-[#edf0e9] [&_tr:last-child]:border-0 [&_tr:hover]:bg-[#f8faf6] [&_td]:px-6 [&_td]:py-3 [&_td]:align-middle [&_td]:text-[#748071] [&_td:first-child]:font-bold [&_button]:mr-2 [&_button]:rounded-full [&_button]:bg-[#eaf3e3] [&_button]:px-3 [&_button]:py-1.5 [&_button]:text-xs [&_button]:font-bold [&_button]:text-[#2f4d2d] [&_button:hover]:bg-[#dce8d1]">
-
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-
-        <dialog id="modalEspacio" class="m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto border-0 bg-transparent p-0 backdrop:bg-[#14200f]/60 backdrop:backdrop-blur-sm">
-
-            <div class="w-full overflow-hidden rounded-3xl bg-white text-left text-[#2b3a1f] shadow-2xl">
-
-                <!-- Encabezado -->
-                <div class="relative border-b border-[#e2e8dc] bg-gradient-to-br from-[#f3f7ed] to-white px-6 pb-4 pt-6 sm:px-7">
-                    <h2 class="text-2xl font-extrabold text-[#2f4d2d]">Nuevo espacio</h2>
-                    <p class="mt-1 text-sm text-[#748071]">Completa la información de la sala.</p>
-                    <button type="button" aria-label="Cerrar" onclick="cerrarModal()"
-                        class="absolute right-5 top-4 grid size-9 place-items-center rounded-full bg-[#eaf0e4] text-xl leading-none text-[#748071] transition hover:bg-[#dce8d1] hover:text-[#2f4d2d]">×</button>
+            <section class="grid w-full grid-cols-1 justify-items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+                    <div class="flex flex-row items-center justify-between gap-2">
+                        <h3 class="text-sm font-bold text-[#748071]">Total de espacios</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-trees size-10 rounded-2xl rounded-tl-md bg-[#edf3e6] p-2.5 text-[#2f4d2d]" aria-hidden="true">
+                            <path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"></path>
+                            <path d="M7 16v6"></path>
+                            <path d="M13 19v3"></path>
+                            <path
+                                d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5">
+                            </path>
+                        </svg>
+                    </div>
+                    <h2 id="total-espacios" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
+                    <span id="puestos-totales" class="text-xs font-semibold text-[#748071]">puestos en total</span>
+                </article>
+    
+                <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+                    <div class="flex flex-row items-center justify-between gap-2">
+                        <h3 class="text-sm font-bold text-[#748071]">Disponibles</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-check size-10 rounded-2xl rounded-tl-md bg-[#eaf3e3] p-2.5 text-[#527b3e]" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="m9 12 2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h2 id="espacios-disponibles" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
+                    <span id="cupos-libres" class="text-xs font-semibold text-[#748071]">0 cupos libres</span>
+                </article>
+    
+                <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+                    <div class="flex flex-row items-center justify-between gap-2">
+                        <h3 class="text-sm font-bold text-[#748071]">Ocupados</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-circle-slash size-10 rounded-2xl rounded-tl-md bg-[#faece8] p-2.5 text-[#a64e43]" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="9" x2="15" y1="15" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h2 id="espacios-ocupados" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
+                    <span class="text-xs font-semibold text-[#748071]">Sin cupos por ahora</span>
+                </article>
+    
+                <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+                    <div class="flex flex-row items-center justify-between gap-2">
+                        <h3 class="text-sm font-bold text-[#748071]">En mantenimiento</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-wrench size-10 rounded-2xl rounded-tl-md bg-[#fbf1dc] p-2.5 text-[#a56d25]" aria-hidden="true">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h2 id="espacios-mantenimiento" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
+                    <span class="text-xs font-semibold text-[#748071]">Reservas deshabilitadas</span>
+                </article>
+    
+                <article class="card-info flex min-h-36 w-full shrink-0 flex-col justify-between gap-3 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] transition duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+                    <div class="flex flex-row items-center justify-between gap-2">
+                        <h3 class="text-sm font-bold text-[#748071]">Reservas registradas</h3>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-calendar-check size-10 rounded-2xl rounded-tl-md bg-[#eaf3e3] p-2.5 text-[#527b3e]" aria-hidden="true">
+                            <path d="M8 2v4"></path>
+                            <path d="M16 2v4"></path>
+                            <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                            <path d="M3 10h18"></path>
+                            <path d="m9 16 2 2 4-4"></path>
+                        </svg>
+                    </div>
+                    <h2 id="reservas-registradas" class="text-4xl font-extrabold tabular-nums tracking-tight">0</h2>
+                    <span class="text-xs font-semibold text-[#748071]">Sin fuente de reservas</span>
+                </article>
+            </section>
+    
+            <section class="mx-auto flex w-full max-w-4xl flex-col gap-y-6 rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] sm:p-7">
+                <div class="flex flex-row items-end justify-between gap-3 border-b border-[#e2e8dc] pb-5">
+                    <div>
+                        <h2 class="text-lg font-extrabold">Ocupación por espacio</h2>
+                        <p class="text-sm text-[#748071]">Cupos usados frente a la capacidad total</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-extrabold tabular-nums"><span id="ocupacion-global">0</span><span class="ml-1 text-sm font-semibold text-[#748071]">% global</span></p>
+                    </div>
                 </div>
-
-                <form id="formNuevoEspacio" action="">
-                    <div class="flex flex-col gap-6 px-6 py-5 md:flex-row sm:px-7 sm:py-6">
-
-                        <!-- Columna izquierda: campos -->
-                        <div class="flex min-w-0 flex-1 flex-col gap-4">
-                            <div class="flex flex-col gap-1.5">
-                                <label for="nombre" class="text-sm font-bold text-[#283618]">Nombre</label>
-                                <input type="text" name="nombre" id="nombre" required placeholder="Ej. Jardín Vertical"
-                                    class="w-full rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] placeholder:text-[#8b9588] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
-                            </div>
-
-                            <div class="flex flex-col gap-1.5">
-                                <label for="descripcion" class="text-sm font-bold text-[#283618]">Descripción</label>
-                                <textarea name="descripcion" id="descripcion" rows="4"
-                                    placeholder="Describe el ambiente y para qué es ideal"
-                                    class="w-full resize-y rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] placeholder:text-[#8b9588] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30"></textarea>
-                            </div>
-
-                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                                <div class="flex flex-col gap-1.5 min-w-0">
-                                    <label for="tipo" class="text-sm font-bold text-[#283618]">Tipo de espacio</label>
-                                    <select name="tipo" id="tipo"
-                                        class="w-full appearance-none rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
-                                        <option value="Sala de trabajo">Sala de trabajo</option>
-                                        <option value="Escritorio individual">Escritorio individual</option>
-                                        <option value="Sala de reuniones">Sala de reuniones</option>
-                                        <option value="Zona colaborativa">Zona colaborativa</option>
-                                    </select>
+    
+                <div id="ocupacion-espacios" class="space-y-4" aria-live="polite"></div>
+    
+    
+                <article class="flex max-w-full flex-wrap items-center gap-x-8 gap-y-3 border-t border-[#e2e8dc] pt-5 text-sm text-[#748071]">
+                    <div class="flex items-center gap-2">
+                        <div class="size-3 rounded-full bg-[#527b3e]"></div>
+                        <span>Disponible</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="size-3 rounded-full bg-[#c85c4d]"></div>
+                        <span>Ocupado</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="size-3 rounded-full bg-[#d29a3d]"></div>
+                        <span>Mantenimiento</span>
+                    </div>
+    
+                </article>
+            </section>
+    
+            <section class="w-full rounded-3xl border border-[#e2e8dc] bg-white p-5 shadow-[0_12px_30px_rgba(43,62,37,0.07)] sm:p-7">
+                <div class="mx-auto mb-5 flex w-full max-w-5xl flex-wrap items-center justify-between gap-4">
+    
+                    <input id="buscarInput" type="text" placeholder="Buscar por nombre..."
+                        class="w-full min-h-10 rounded-full border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-2 text-sm placeholder:text-[#8b9588] focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30 sm:w-auto sm:flex-1">
+    
+                    <!-- Filtros: scroll horizontal suave si la pantalla es muy estrecha -->
+                    <div id="filtros-estado" class="flex items-center gap-1 overflow-x-auto text-xs" role="group" aria-label="Filtrar espacios por estado">
+                        <button type="button" data-filtro-estado="todos" aria-pressed="true" class="whitespace-nowrap rounded-full bg-[#edf3e6] px-3 py-2 font-bold text-[#2f4d2d] transition">Todos</button>
+                        <button type="button" data-filtro-estado="disponible" aria-pressed="false" class="whitespace-nowrap rounded-full px-3 py-2 font-semibold text-[#748071] transition hover:bg-[#f3f6ef] hover:text-[#2f4d2d]">Disponible</button>
+                        <button type="button" data-filtro-estado="ocupado" aria-pressed="false" class="whitespace-nowrap rounded-full px-3 py-2 font-semibold text-[#748071] transition hover:bg-[#f3f6ef] hover:text-[#2f4d2d]">Ocupado</button>
+                        <button type="button" data-filtro-estado="mantenimiento" aria-pressed="false" class="whitespace-nowrap rounded-full px-3 py-2 font-semibold text-[#748071] transition hover:bg-[#f3f6ef] hover:text-[#2f4d2d]">Mantenimiento</button>
+                    </div>
+    
+                    <!-- Botón: ancho completo en móvil para fácil toque, normal en escritorio + color de fondo -->
+                    <button id="btnNuevoEspacio" class="inline-flex min-h-10 w-full cursor-pointer items-center justify-center rounded-full bg-[#4f743d] px-5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#2f4d2d] sm:w-auto">
+                        + Nuevo espacio
+                    </button>
+                </div>
+    
+    
+                <div class="mx-auto max-w-5xl overflow-x-auto rounded-2xl border border-[#e2e8dc]">
+                    <table class="w-full min-w-[640px] border-collapse text-left text-sm">
+                        <thead class="border-b border-[#e2e8dc] bg-[#f5f8f2] text-xs uppercase tracking-wider text-[#748071]">
+                            <tr>
+                                <th class="px-6 py-3 font-bold">Espacio</th>
+                                <th class="px-6 py-3 font-bold">Estado</th>
+                                <th class="px-6 py-3 font-bold">Capacidad</th>
+                                <th class="px-6 py-3 font-bold">Disponibilidad</th>
+                                <th class="px-6 py-3 text-right font-bold">Acciones</th>
+                            </tr>
+                        </thead>
+    
+                        <tbody id="tabla-espacios" class="[&_tr]:border-b [&_tr]:border-[#edf0e9] [&_tr:last-child]:border-0 [&_tr:hover]:bg-[#f8faf6] [&_td]:px-6 [&_td]:py-3 [&_td]:align-middle [&_td]:text-[#748071] [&_td:first-child]:font-bold [&_button]:mr-2 [&_button]:rounded-full [&_button]:bg-[#eaf3e3] [&_button]:px-3 [&_button]:py-1.5 [&_button]:text-xs [&_button]:font-bold [&_button]:text-[#2f4d2d] [&_button:hover]:bg-[#dce8d1]">
+    
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+    
+    
+            <dialog id="modalEspacio" class="m-auto max-h-[90vh] w-[calc(100%-2rem)] max-w-3xl overflow-y-auto border-0 bg-transparent p-0 backdrop:bg-[#14200f]/60 backdrop:backdrop-blur-sm">
+    
+                <div class="w-full overflow-hidden rounded-3xl bg-white text-left text-[#2b3a1f] shadow-2xl">
+    
+                    <!-- Encabezado -->
+                    <div class="relative border-b border-[#e2e8dc] bg-gradient-to-br from-[#f3f7ed] to-white px-6 pb-4 pt-6 sm:px-7">
+                        <h2 class="text-2xl font-extrabold text-[#2f4d2d]">Nuevo espacio</h2>
+                        <p class="mt-1 text-sm text-[#748071]">Completa la información de la sala.</p>
+                        <button type="button" aria-label="Cerrar" onclick="cerrarModal()"
+                            class="absolute right-5 top-4 grid size-9 place-items-center rounded-full bg-[#eaf0e4] text-xl leading-none text-[#748071] transition hover:bg-[#dce8d1] hover:text-[#2f4d2d]">×</button>
+                    </div>
+    
+                    <form id="formNuevoEspacio" action="">
+                        <div class="flex flex-col gap-6 px-6 py-5 md:flex-row sm:px-7 sm:py-6">
+    
+                            <!-- Columna izquierda: campos -->
+                            <div class="flex min-w-0 flex-1 flex-col gap-4">
+                                <div class="flex flex-col gap-1.5">
+                                    <label for="nombre" class="text-sm font-bold text-[#283618]">Nombre</label>
+                                    <input type="text" name="nombre" id="nombre" required placeholder="Ej. Jardín Vertical"
+                                        class="w-full rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] placeholder:text-[#8b9588] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
                                 </div>
-                                <div class="flex flex-col gap-1.5 min-w-0">
-                                    <label for="estado" class="text-sm font-bold text-[#283618]">Estado</label>
-                                    <select name="estado" id="estado"
-                                        class="w-full appearance-none rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
-                                        <option value="1">Disponible</option>
-                                        <option value="2">Ocupado</option>
-                                        <option value="3">Mantenimiento</option>
-                                    </select>
+    
+                                <div class="flex flex-col gap-1.5">
+                                    <label for="descripcion" class="text-sm font-bold text-[#283618]">Descripción</label>
+                                    <textarea name="descripcion" id="descripcion" rows="4"
+                                        placeholder="Describe el ambiente y para qué es ideal"
+                                        class="w-full resize-y rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] placeholder:text-[#8b9588] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30"></textarea>
+                                </div>
+    
+                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                    <div class="flex flex-col gap-1.5 min-w-0">
+                                        <label for="tipo" class="text-sm font-bold text-[#283618]">Tipo de espacio</label>
+                                        <select name="tipo" id="tipo"
+                                            class="w-full appearance-none rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
+                                            <option value="Sala de trabajo">Sala de trabajo</option>
+                                            <option value="Escritorio individual">Escritorio individual</option>
+                                            <option value="Sala de reuniones">Sala de reuniones</option>
+                                            <option value="Zona colaborativa">Zona colaborativa</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-col gap-1.5 min-w-0">
+                                        <label for="estado" class="text-sm font-bold text-[#283618]">Estado</label>
+                                        <select name="estado" id="estado"
+                                            class="w-full appearance-none rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
+                                            <option value="1">Disponible</option>
+                                            <option value="2">Ocupado</option>
+                                            <option value="3">Mantenimiento</option>
+                                        </select>
+                                    </div>
+                                </div>
+    
+                                <div class="grid grid-cols-1 items-end gap-4 sm:grid-cols-2">
+                                    <div class="flex flex-col gap-1.5 min-w-0">
+                                        <label for="capacidad" class="text-sm font-bold text-[#283618]">Capacidad</label>
+                                        <input type="number" name="capacidad" id="capacidad" required value="6" min="1"
+                                            class="w-full rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
+                                    </div>
+                                    <div class="flex flex-col gap-1.5 min-w-0">
+                                        <label for="disponible" class="text-sm font-bold text-[#283618]">Cupos disponibles</label>
+                                        <input type="number" name="disponible" id="disponible" required value="6" min="0"
+                                            class="w-full rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
+                                    </div>
+    
+                                </div>
+    
+    
+                                <div class="flex justify-end gap-3 border-t border-[#e2e8dc] pt-4">
+                                    <button type="button" onclick="cerrarModal()"
+                                        class="min-h-11 rounded-full border border-[#e2e8dc] bg-white px-6 py-2.5 text-sm font-bold text-[#283618] transition hover:bg-[#f4f7f1]">Cancelar</button>
+                                    <button type="submit"
+                                        class="min-h-11 rounded-full bg-[#4f743d] px-6 py-2.5 text-sm font-bold text-white transition hover:bg-[#2f4d2d]">Guardar
+                                        espacio</button>
                                 </div>
                             </div>
-
-                            <div class="grid grid-cols-1 items-end gap-4 sm:grid-cols-2">
-                                <div class="flex flex-col gap-1.5 min-w-0">
-                                    <label for="capacidad" class="text-sm font-bold text-[#283618]">Capacidad</label>
-                                    <input type="number" name="capacidad" id="capacidad" required value="6" min="1"
-                                        class="w-full rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
-                                </div>
-                                <div class="flex flex-col gap-1.5 min-w-0">
-                                    <label for="disponible" class="text-sm font-bold text-[#283618]">Cupos disponibles</label>
-                                    <input type="number" name="disponible" id="disponible" required value="6" min="0"
-                                        class="w-full rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-4 py-3 text-sm text-[#283618] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
-                                </div>
-
+    
+                            <!-- Columna derecha: imagen -->
+                            <div class="flex w-full flex-col gap-2 md:w-32 md:flex-none">
+                                <span class="text-sm font-bold text-[#283618]">Imagen</span>
+    
+                                <img id="previewImagen" src="../img/cabina-musgo.jpg" alt="Vista previa del espacio"
+                                    class="h-40 w-full rounded-2xl object-cover shadow-md md:h-24 md:w-32">
+    
+                                <input type="text" name="imagen" id="imagen" placeholder="../img/..."
+                                    class="w-full rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-3 py-2 text-xs text-[#283618] placeholder:text-[#8b9588] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
                             </div>
-
-
-                            <div class="flex justify-end gap-3 border-t border-[#e2e8dc] pt-4">
-                                <button type="button" onclick="cerrarModal()"
-                                    class="min-h-11 rounded-full border border-[#e2e8dc] bg-white px-6 py-2.5 text-sm font-bold text-[#283618] transition hover:bg-[#f4f7f1]">Cancelar</button>
-                                <button type="submit"
-                                    class="min-h-11 rounded-full bg-[#4f743d] px-6 py-2.5 text-sm font-bold text-white transition hover:bg-[#2f4d2d]">Guardar
-                                    espacio</button>
-                            </div>
-                        </div>
-
-                        <!-- Columna derecha: imagen -->
-                        <div class="flex w-full flex-col gap-2 md:w-32 md:flex-none">
-                            <span class="text-sm font-bold text-[#283618]">Imagen</span>
-
-                            <img id="previewImagen" src="../img/cabina-musgo.jpg" alt="Vista previa del espacio"
-                                class="h-40 w-full rounded-2xl object-cover shadow-md md:h-24 md:w-32">
-
-                            <input type="text" name="imagen" id="imagen" placeholder="../img/..."
-                                class="w-full rounded-xl border border-[#e2e8dc] bg-[#fbfcfa] px-3 py-2 text-xs text-[#283618] placeholder:text-[#8b9588] transition focus:border-[#8eaf64] focus:outline-none focus:ring-2 focus:ring-[#8eaf64]/30">
-                        </div>
-
-                    </div> <!-- cierra el flex de dos columnas (este faltaba) -->
-                </form>
-            </div>
-
-        </dialog>
+    
+                        </div> <!-- cierra el flex de dos columnas (este faltaba) -->
+                    </form>
+                </div>
+    
+            </dialog>
+        </div>
+        
     </main>
 
     <script src="../js/dashboard.js"></script>
