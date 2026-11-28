@@ -11,9 +11,24 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Nunito+Sans:wght@400;600;700;800&amp;display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="./dist/output.css">
+  <link rel="stylesheet" href="./dist/ladingpage.css">
 
 </head>
+ <header class="sticky top-0 z-50 bg-crema/90 backdrop-blur border-b border-bosque/10">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-4">
+      <a href="#inicio" class="font-titulo text-xl font-bold">Verde<span class="text-oliva">Coworking</span></a>
+      <ul class="hidden md:flex gap-8 text-sm font-medium">
+        <li><a href="#inicio" class="hover:text-tierra">Inicio</a></li>
+        <li><a href="#espacios" class="hover:text-tierra">Espacios</a></li>
+        <li><a href="#nosotros" class="hover:text-tierra">Sobre nosotros</a></li>
+        <li><a href="#beneficios" class="hover:text-tierra">Beneficios</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="pages/login.html" title="Acceso administrador" aria-label="Acceso administrador" class="rounded-full border border-bosque/20 px-3 py-2 text-sm hover:bg-bosque/10">👤</a>
+        <a href="#espacios" class="rounded-full bg-bosque px-5 py-2 text-sm font-semibold text-crema hover:bg-oliva">Reservar espacio</a>
+      </div>
+    </nav>
+  </header>
 
 <body>
   <section id="inicio" class="relative isolate bg-[#283618] text-[#fefae0]">
@@ -339,10 +354,6 @@
     </div>
   </section>
 
-  <footer>
-    <p>© Verde Coworking</p>
-    <a href="./pages/login.html">Acceso administrador</a>
-  </footer>
 
   <dialog
     id="modal-reserva"
@@ -418,6 +429,40 @@
       </div>
     </div>
   </dialog>
+  <footer class="bg-bosque text-crema">
+    <div class="max-w-6xl mx-auto px-4 py-14 grid gap-10 md:grid-cols-3">
+      <div>
+        <p class="font-titulo text-xl font-bold">Verde Coworking</p>
+        <p class="mt-3 text-sm text-crema/70">Espacios de trabajo rodeados de naturaleza, diseñados para concentrarte, crear y conectar.</p>
+        <div class="mt-4 flex gap-4 text-sm">
+          <a href="https://instagram.com" class="hover:underline">Instagram</a>
+          <a href="https://facebook.com" class="hover:underline">Facebook</a>
+          <a href="https://linkedin.com" class="hover:underline">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-semibold">Navegación</h2>
+        <ul class="mt-3 space-y-2 text-sm text-crema/70">
+          <li><a href="#inicio" class="hover:text-crema">Inicio</a></li>
+          <li><a href="#espacios" class="hover:text-crema">Espacios</a></li>
+          <li><a href="#nosotros" class="hover:text-crema">Sobre nosotros</a></li>
+          <li><a href="#beneficios" class="hover:text-crema">Beneficios</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-semibold">Contacto</h2>
+        <ul class="mt-3 space-y-2 text-sm text-crema/70">
+          <li>Calle 10 #43-21, El Poblado, Medellín</li>
+          <li>+57 300 456 7890</li>
+          <li>admin@verdecoworking.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-crema/20 py-5 text-center text-xs text-crema/70">
+      <p>© 2026 Verde Coworking. Todos los derechos reservados.</p>
+      <a href="login.html" class="underline">Acceso administrador</a>
+    </div>
+  </footer>
 
   <script src="js/land.js"></script>
 </body>
