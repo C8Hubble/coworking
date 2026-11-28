@@ -17,7 +17,7 @@
 
 <body>
   <section id="inicio" class="relative isolate bg-[#283618] text-[#fefae0]">
-    <img src="https://verde-bloom-workspaces.lovable.app/assets/hero-coworking-BmT5rWgb.jpg"
+    <img src="img/hero-coworking.jpg"
       alt="Coworking bajo un techo de cristal, rodeado de plantas tropicales"
       class="absolute inset-0 -z-20 size-full object-cover">
 
@@ -65,7 +65,7 @@
 
         <ul class="mt-3 divide-y divide-white/15">
           <li class="flex items-center gap-3 py-2">
-            <img src="https://verde-bloom-workspaces.lovable.app/images/espacios/invernadero-norte.jpg" alt=""
+            <img src="img/invernadero-norte.jpg" alt=""
               class="size-10 rounded-full object-cover">
             <div>
               <p class="font-bold">Invernadero Norte</p>
@@ -73,7 +73,7 @@
             </div>
           </li>
           <li class="flex items-center gap-3 py-2">
-            <img src="https://verde-bloom-workspaces.lovable.app/images/espacios/sala-bambu.jpg" alt=""
+            <img src="img/sala-bambu.jpg" alt=""
               class="size-10 rounded-full object-cover">
             <div>
               <p class="font-bold">Sala Bambú</p>
@@ -81,7 +81,7 @@
             </div>
           </li>
           <li class="flex items-center gap-3 py-2">
-            <img src="https://verde-bloom-workspaces.lovable.app/images/espacios/terraza-jardin.jpg" alt=""
+            <img src="img/terraza-jardin.jpg" alt=""
               class="size-10 rounded-full object-cover">
             <div>
               <p class="font-bold">Terraza Jardín</p>
@@ -89,7 +89,7 @@
             </div>
           </li>
           <li class="flex items-center gap-3 py-2">
-            <img src="https://verde-bloom-workspaces.lovable.app/images/espacios/cabina-musgo.jpg" alt=""
+            <img src="img/cabina-musgo.jpg" alt=""
               class="size-10 rounded-full object-cover">
             <div>
               <p class="font-bold">Cabina Musgo</p>
@@ -170,24 +170,90 @@
       </div>
     </div>
   </section>
+  <section id="espacios" aria-labelledby="titulo-espacios" class="bg-[#f8f4d9] text-[#283618]">
+    <div class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-28">
+      <div class="max-w-xl">
+        <p class="text-sm font-extrabold tracking-[0.18em] text-[#8c4d19] uppercase">
+          Espacios de trabajo
+        </p>
+        <h2 id="titulo-espacios" class="mt-4 text-3xl leading-tight font-extrabold sm:text-5xl">
+          Elige el rincón verde que va con tu día
+        </h2>
+        <p class="mt-4 leading-relaxed text-[#283618]/80">
+          Consulta la disponibilidad y elige el espacio que quieres reservar.
+        </p>
+      </div>
 
-  <section id="espacios">
-    <h2>Espacios de trabajo</h2>
-    <p>Conoce el tipo y la capacidad de cada espacio.</p>
+      <div id="filtros-espacios" role="group" aria-label="Filtrar espacios" class="mt-8 flex flex-wrap gap-2">
+        <button type="button" data-filtro="todos" aria-pressed="true"
+          class="cursor-pointer rounded-full border border-[#283618]/20 bg-white px-4 py-2 text-sm font-bold aria-pressed:bg-[#283618] aria-pressed:text-[#fefae0]">
+          Todos <span data-conteo></span>
+        </button>
+        <button type="button" data-filtro="disponible" aria-pressed="false"
+          class="cursor-pointer rounded-full border border-[#283618]/20 bg-white px-4 py-2 text-sm font-bold aria-pressed:bg-[#283618] aria-pressed:text-[#fefae0]">
+          Disponibles <span data-conteo></span>
+        </button>
+        <button type="button" data-filtro="ocupado" aria-pressed="false"
+          class="cursor-pointer rounded-full border border-[#283618]/20 bg-white px-4 py-2 text-sm font-bold aria-pressed:bg-[#283618] aria-pressed:text-[#fefae0]">
+          Ocupados <span data-conteo></span>
+        </button>
+        <button type="button" data-filtro="mantenimiento" aria-pressed="false"
+          class="cursor-pointer rounded-full border border-[#283618]/20 bg-white px-4 py-2 text-sm font-bold aria-pressed:bg-[#283618] aria-pressed:text-[#fefae0]">
+          En mantenimiento <span data-conteo></span>
+        </button>
+      </div>
 
-    <ul id="lista-espacios">
-      <li>
-        <article>
-          <h3>Invernadero Norte</h3>
-          <p>Sala de trabajo tranquila con luz natural.</p>
-          <p>Capacidad: 12 personas</p>
-        </article>
-      </li>
-    </ul>
+      <p id="resultado-espacios" class="sr-only" role="status"></p>
+      <ul id="lista-espacios" class="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3"></ul>
+
+      <template id="tarjeta-espacio">
+        <li>
+          <article
+            class="flex h-full flex-col overflow-hidden rounded-3xl border border-[#283618]/10 bg-white shadow-sm">
+            <div class="relative aspect-16/10 bg-[#283618]/10">
+              <img alt="" loading="lazy" class="size-full object-cover">
+              <span data-etiqueta-estado
+                class="absolute top-4 left-4 rounded-full px-3 py-1 text-xs font-extrabold data-[estado=disponible]:bg-[#a7c957] data-[estado=ocupado]:bg-red-100 data-[estado=mantenimiento]:bg-amber-100"></span>
+            </div>
+
+            <div class="flex flex-1 flex-col p-5">
+              <p data-tipo class="text-sm font-bold text-[#8c4d19]"></p>
+              <h3 data-nombre class="mt-1 text-2xl font-extrabold"></h3>
+              <p data-descripcion class="mt-3 text-sm leading-6 text-[#283618]/80"></p>
+
+              <dl class="mt-5 grid grid-cols-2 gap-3">
+                <div class="rounded-xl bg-[#fefae0] p-3">
+                  <dt class="text-xs font-bold uppercase">Capacidad</dt>
+                  <dd data-capacidad class="mt-1 font-extrabold"></dd>
+                </div>
+                <div class="rounded-xl bg-[#fefae0] p-3">
+                  <dt class="text-xs font-bold uppercase">Disponibles</dt>
+                  <dd data-cupos class="mt-1 font-extrabold"></dd>
+                </div>
+              </dl>
+
+              <div data-ocupacion class="mt-5">
+                <p data-porcentaje class="text-sm font-semibold"></p>
+                <div data-medidor role="meter" aria-label="Ocupación" aria-valuemin="0" aria-valuemax="100"
+                  class="mt-2 h-2 overflow-hidden rounded-full bg-[#283618]/10">
+                  <div data-barra class="h-full rounded-full bg-[#a7c957]"></div>
+                </div>
+              </div>
+
+              <p data-aviso hidden class="mt-4 text-sm text-[#283618]/80"></p>
+
+              <div class="mt-auto pt-5">
+                <button data-reservar type="button" disabled
+                  class="w-full rounded-full bg-[#283618] px-4 py-3 text-sm font-bold text-[#fefae0] data-[estado=ocupado]:bg-[#283618]/10 data-[estado=ocupado]:text-[#283618] data-[estado=mantenimiento]:bg-[#283618]/10 data-[estado=mantenimiento]:text-[#283618]"></button>
+              </div>
+            </div>
+          </article>
+        </li>
+      </template>
+    </div>
   </section>
   <section id="beneficios" aria-labelledby="titulo-beneficios"
     class="relative isolate overflow-hidden bg-[#283618] text-[#fefae0]">
-    <!-- Imagen de fondo y capa verde para dar contraste -->
     <img src="img/login-leaves.jpg" alt="" loading="lazy"
       class="absolute inset-0 -z-20 size-full object-cover object-center">
     <div aria-hidden="true" class="absolute inset-0 -z-10 bg-[#283618]/85"></div>
@@ -204,7 +270,6 @@
       </div>
 
       <ul class="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
-        <!-- 01 · Naturaleza -->
         <li class="rounded-[1.75rem] rounded-tl-xl border border-[#fefae0]/25 bg-[#fefae0]/10 p-7 lg:min-h-73.5">
           <div class="grid size-14 place-items-center rounded-[1.4rem] rounded-tl-xl bg-[#a7c957] text-[#283618]">
             <svg aria-hidden="true" class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -238,7 +303,6 @@
           </p>
         </li>
 
-        <!-- 03 · Tranquilidad -->
         <li class="rounded-[1.75rem] rounded-tl-xl border border-[#fefae0]/25 bg-[#fefae0]/10 p-7 lg:min-h-73.5">
           <div class="grid size-14 place-items-center rounded-[1.4rem] rounded-tl-xl bg-[#a7c957] text-[#283618]">
             <svg aria-hidden="true" class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -279,6 +343,83 @@
     <p>© Verde Coworking</p>
     <a href="./pages/login.html">Acceso administrador</a>
   </footer>
+
+  <dialog
+    id="modal-reserva"
+    aria-labelledby="titulo-modal-reserva"
+    class="m-auto w-[min(100%-2rem,68rem)] overflow-hidden rounded-4xl border-0 bg-white p-0 text-[#283618] shadow-2xl backdrop:bg-[#101909]/70"
+  >
+    <div class="grid lg:grid-cols-2">
+      <div class="relative min-h-72 bg-[#283618] text-[#fefae0]">
+        <img
+          id="modal-imagen"
+          src=""
+          alt=""
+          class="absolute inset-0 size-full object-cover opacity-80"
+        >
+        <div class="absolute inset-0 bg-linear-to-t from-[#101909] via-[#101909]/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-7">
+          <p id="modal-tipo" class="text-xs font-extrabold tracking-[0.18em] text-[#a7c957] uppercase"></p>
+          <h2 id="titulo-modal-reserva" class="mt-2 text-3xl font-extrabold"><span id="modal-nombre"></span></h2>
+          <p id="modal-descripcion" class="mt-3 text-sm leading-6 text-[#fefae0]/85"></p>
+          <div class="mt-5 flex gap-3 text-sm">
+            <span class="rounded-full border border-white/30 px-3 py-2">Capacidad: <strong id="modal-capacidad"></strong></span>
+            <span class="rounded-full border border-white/30 px-3 py-2">Disponibles: <strong id="modal-cupos"></strong></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-7 sm:p-9">
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-sm font-extrabold tracking-[0.18em] text-[#8c4d19] uppercase">Reserva tu lugar</p>
+            <p class="mt-2 text-sm leading-6 text-[#283618]/75">Completa tus datos y elige la jornada.</p>
+          </div>
+          <button id="cerrar-modal-reserva" type="button" aria-label="Cerrar modal" class="grid size-10 shrink-0 cursor-pointer place-items-center rounded-full bg-[#f8f2d3] text-xl">×</button>
+        </div>
+
+        <form id="form-reserva" class="mt-7 space-y-5">
+          <div>
+            <label for="reserva-nombre" class="block text-sm font-bold">Nombre completo</label>
+            <input id="reserva-nombre" name="nombre" type="text" required autocomplete="name" placeholder="Ej. María Fernanda López" class="mt-2 h-11 w-full rounded-full border border-[#283618]/20 px-4 text-sm outline-none focus:border-[#a7c957]">
+          </div>
+
+          <div>
+            <label for="reserva-correo" class="block text-sm font-bold">Correo electrónico</label>
+            <input id="reserva-correo" name="correo" type="email" required autocomplete="email" placeholder="tucorreo@ejemplo.com" class="mt-2 h-11 w-full rounded-full border border-[#283618]/20 px-4 text-sm outline-none focus:border-[#a7c957]">
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="reserva-fecha" class="block text-sm font-bold">Fecha de reserva</label>
+              <input id="reserva-fecha" name="fecha" type="date" required class="mt-2 h-11 w-full rounded-full border border-[#283618]/20 px-4 text-sm outline-none focus:border-[#a7c957]">
+            </div>
+            <div>
+              <label for="reserva-cupos" class="block text-sm font-bold">Cupos</label>
+              <input id="reserva-cupos" name="cupos" type="number" min="1" value="1" required class="mt-2 h-11 w-full rounded-full border border-[#283618]/20 px-4 text-sm outline-none focus:border-[#a7c957]">
+            </div>
+          </div>
+
+          <fieldset>
+            <legend class="text-sm font-bold">Jornada</legend>
+            <div class="mt-2 grid gap-2 sm:grid-cols-3">
+              <label class="cursor-pointer rounded-2xl border border-[#283618]/20 p-3 text-sm has-checked:border-[#a7c957] has-checked:bg-[#f8f2d3]"><input class="sr-only" type="radio" name="jornada" value="Mañana · 08:00 a. m. – 01:00 p. m." checked> <strong>Mañana</strong><span class="block text-xs">08:00–01:00</span></label>
+              <label class="cursor-pointer rounded-2xl border border-[#283618]/20 p-3 text-sm has-checked:border-[#a7c957] has-checked:bg-[#f8f2d3]"><input class="sr-only" type="radio" name="jornada" value="Tarde · 02:00 p. m. – 06:00 p. m."> <strong>Tarde</strong><span class="block text-xs">02:00–06:00</span></label>
+              <label class="cursor-pointer rounded-2xl border border-[#283618]/20 p-3 text-sm has-checked:border-[#a7c957] has-checked:bg-[#f8f2d3]"><input class="sr-only" type="radio" name="jornada" value="Día completo · 08:00 a. m. – 06:00 p. m."> <strong>Día completo</strong><span class="block text-xs">08:00–06:00</span></label>
+            </div>
+          </fieldset>
+
+          <p id="mensaje-reserva" role="alert" class="text-sm font-bold text-[#8c4d19]"></p>
+          <div class="flex justify-end gap-3">
+            <button id="cancelar-reserva" type="button" class="cursor-pointer rounded-full border border-[#283618]/20 px-5 py-3 text-sm font-bold">Cancelar</button>
+            <button type="submit" class="cursor-pointer rounded-full bg-[#a7c957] px-5 py-3 text-sm font-bold text-[#283618]">Confirmar reserva</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/land.js"></script>
 </body>
 
 </html>
