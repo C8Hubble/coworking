@@ -29,5 +29,6 @@ formulario.addEventListener("submit", (e) => {
   }
 
   sessionStorage.setItem("sesionVerde", "admin");
-  window.location.href = "./admin.html";
+  window.location.href = "./reservas.html";
 });
+

@@ -55,6 +55,8 @@ const espacios = [
   }
 ];
 
+const API_URL = "http://localhost:3000";
+
 const estadosEspacio = {
   disponible: {
     etiqueta: "Disponible",
@@ -209,7 +211,7 @@ modalReserva.addEventListener("click", (evento) => {
   }
 });
 
-formularioReserva.addEventListener("submit", (evento) => {
+formularioReserva.addEventListener("submit", async (evento) => {
   evento.preventDefault();
 
   if (!espacioSeleccionado) return;
@@ -222,22 +224,52 @@ formularioReserva.addEventListener("submit", (evento) => {
     return;
   }
 
+  const jornadaSeleccionada = datosFormulario.get("jornada");
+  const partesJornada = jornadaSeleccionada.split(" · ");
+  const horario = partesJornada[1] || "";
+  const [horaEntrada, horaFinal] = horario.split(" – ");
+  const indiceEspacio = espacios.indexOf(espacioSeleccionado);
+
+  // Este formato coincide con el recurso "reservas" de db.json.
   const reserva = {
     id: crypto.randomUUID(),
-    espacio: espacioSeleccionado.nombre,
-    tipo: espacioSeleccionado.tipo,
-    imagen: espacioSeleccionado.imagen,
-    nombre: datosFormulario.get("nombre"),
-    correo: datosFormulario.get("correo"),
+    salaId: String(indiceEspacio + 1),
+    Cliente: datosFormulario.get("nombre"),
+    Correo: datosFormulario.get("correo"),
     fecha: datosFormulario.get("fecha"),
     cupos,
-    jornada: datosFormulario.get("jornada"),
-    creadaEn: new Date().toISOString()
+    jornada: partesJornada[0],
+    "hora-entrada": horaEntrada || "",
+    "hora-final": horaFinal || "",
+    estado: true,
+    fechaRegistro: new Date().toISOString()
   };
 
-  localStorage.setItem("reservasVerde", JSON.stringify([...reservasGuardadas(), reserva]));
-  cerrarModalReserva();
-  alert("Reserva guardada correctamente.");
+  const botonEnviar = formularioReserva.querySelector("[type='submit']");
+  botonEnviar.disabled = true;
+  botonEnviar.textContent = "Guardando...";
+  mensajeReserva.textContent = "";
+
+  try {
+    const respuesta = await fetch(`${API_URL}/reservas`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reserva)
+    });
+
+    if (!respuesta.ok) throw new Error("No se pudo guardar la reserva");
+
+    const reservaGuardada = await respuesta.json();
+    localStorage.setItem("reservasVerde", JSON.stringify([...reservasGuardadas(), reservaGuardada]));
+    cerrarModalReserva();
+    alert("Reserva guardada correctamente.");
+  } catch (error) {
+    console.error(error);
+    mensajeReserva.textContent = "No se pudo guardar. Verifica que json-server esté ejecutándose en el puerto 3000.";
+  } finally {
+    botonEnviar.disabled = false;
+    botonEnviar.textContent = "Confirmar reserva";
+  }
 });
 
 mostrarEspacios("todos");
