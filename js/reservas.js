@@ -5,6 +5,15 @@ const inputBuscador = document.getElementById('buscador');
 const selectEspacios = document.getElementById('espacios');
 const botonesTabs = document.querySelectorAll('[role="tab"]');
 
+const botonCerrarSesion = document.getElementById('cerrar-sesion');
+
+if (botonCerrarSesion) {
+  botonCerrarSesion.addEventListener('click', () => {
+    sessionStorage.removeItem('sesionVerde');
+    window.location.href = './login.html';
+  });
+}
+
 
 let todasLasReservas = [];
 let todasLasSalas = [];
