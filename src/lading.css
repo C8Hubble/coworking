@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme{
+  /* Tokens usados por el header y los componentes de la landing. */
+  --color-crema: #fefae0;
+  --color-bosque: #283618;
+  --color-oliva: #a7c957;
+  --color-hoja: #a7c957;
+  --color-tierra: #bc6c25;
+  --color-ocre: #e09f3e;
+  --font-titulo: "Montserrat", sans-serif;
+  --font-sans: "Nunito Sans", sans-serif;
+
+  /* Alias conservados para los estilos inline existentes. */
+  --verde-crema: #fefae0;
+  --verde-bosque: #283618;
+  --verde-hoja: #a7c957;
+  --verde-tierra: #bc6c25;
+  --verde-ocre: #e09f3e;
+  --fuente-titulos: "Montserrat", sans-serif;
+  --fuente-texto: "Nunito Sans", sans-serif;
+}
+
+body {
+  font-family: var(--fuente-texto);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+}
